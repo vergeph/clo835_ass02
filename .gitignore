@@ -2,3 +2,4 @@
 *.tf
 ass02.pub
 ass02
+*.tfstate
