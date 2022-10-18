@@ -10,20 +10,21 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  template:
     metadata:
       labels:
-        app: mysql
-  spec:
-   containers:
-    - name: mysql
-      image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-db:v2.0
-      env:
+       app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-db:v2.0
+        env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secret
               key: password
-      ports:
+        ports:
         - name: mysql
           containerPort: 3306
           protocol: TCP
