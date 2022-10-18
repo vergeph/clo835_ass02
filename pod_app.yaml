@@ -8,7 +8,33 @@ metadata:
 spec:
   containers:
     - name: employees-webapp
-      image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-app:v1.0
+      image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-app:v2.0
+      env:
+        - name: DBHOST
+          valueFrom:
+             secretKeyRef:
+               name: app-secrets
+               key: DBHOST
+        - name: DBPORT
+          valueFrom:
+             secretKeyRef:
+               name: app-secrets
+               key: DBPORT  
+        - name: DBPWD
+          valueFrom:
+             secretKeyRef:
+               name: app-secrets
+               key: DBPWD
+        - name: DATABASE
+          valueFrom:
+             secretKeyRef:
+               name: app-secrets
+               key: DATABASE
+        - name: DBUSER
+          valueFrom:
+             secretKeyRef:
+               name: app-secrets
+               key: DBUSER
       ports:
         - name: web
           containerPort: 8080
