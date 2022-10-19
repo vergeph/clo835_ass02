@@ -2,13 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql-employee
+  namespace: db
   labels:
-    name: mysql-employee
     app: mysql
 spec:
   ports:
   - port: 3306
     targetPort: 3306
   selector:
-    name: mysql-employee
     app: mysql
