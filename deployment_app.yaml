@@ -3,16 +3,17 @@ kind: Deployment
 metadata:
   name: employees
   namespace: app
-spec:
-  selector:
+  labels:
     app: employees
-    replicas: 3
+spec:
+  replicas: 3
+  selector:
     matchLabels:
       app: employees
   template:
     metadata:
       labels:
-        app: employees
+       app: employees
     spec:
      containers:
       - name: employees-webapp

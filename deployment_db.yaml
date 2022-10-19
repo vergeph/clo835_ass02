@@ -3,26 +3,28 @@ kind: Deployment
 metadata:
   name: mysql
   namespace: db
-spec:
-  selector:
+  labels:
     app: mysql
-    replicas: 1
+spec:
+  replicas: 1
+  selector:
     matchLabels:
       app: mysql
   template:
     metadata:
       labels:
-        app: mysql
+       app: mysql
     spec:
       containers:
-      - image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-db:v2.0
-        name: mysql
+      - name: mysql
+        image: 466548522055.dkr.ecr.us-east-1.amazonaws.com/ass02-db:v2.0
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-secret
               key: password
-          ports:
-           - containerPort: 3306
-             name: mysql
+        ports:
+        - name: mysql
+          containerPort: 3306
+          protocol: TCP
